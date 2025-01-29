@@ -1,8 +1,13 @@
 # This file gives the command line interface for the RSA program.
 # Here, we can generate keys, encrypt messages, and decrypt messages. (python3 -m RSA.CLInterface)
 
-from .KeyGen import genkeys
-from .Cription import encrypt, decrypt
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from RSA.KeyGen import genkeys
+from RSA.Cription import encrypt, decrypt
 
 def main():
     print("RSA Encryption Tool")
