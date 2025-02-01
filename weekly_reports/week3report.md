@@ -1,6 +1,6 @@
 # Week 3 Report
 
-## Hours Spent: 20 hours
+## Hours Spent: 15 hours
 
 ## What have you done this week?
 In this week, I worked on enhancing the quality and coverage of RSA encryption and decryption. The specific tasks done included:
