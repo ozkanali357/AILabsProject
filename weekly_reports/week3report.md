@@ -8,7 +8,7 @@ In this week, I worked on improving the quality and coverage of RSA encryption a
 - Setup the Coverage tool for assessing test coverage with the purpose to reveal un-tested parts of the code.
 Integrated `pylint` in order to follow the coding standard and improve the quality of code.
 - Renaming of modules.
-- More documentation is involved in every codebase with regard to using them.
+- More comments in every file about using them.
  
 ## How does the project progress?
 This week, the project moved ahead by writing unit tests that increased the reliability of the code. I integrated `pylint` for higher code quality and better test coverage.
