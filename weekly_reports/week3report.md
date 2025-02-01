@@ -18,7 +18,6 @@ This week, the project really moved ahead by writing extensive unit tests that i
 - Writing comprehensive unit tests to cover different edge cases, which also improved the code reliability.
 How to configure and use the coverage tool to measure test coverage and identify untested parts of the code. How to use pylint in order to maintain coding standards and improve code quality. Why coding conventionssuch as snake_case naming and proper import position are important. How to refactor code in response to pylint identification of issues.
 - It was challenging to address all the issues thrown by `pylint`, long line breaks and adding missing docstrings.
-- To reach 100% test coverage it took some time to write more tests to cover edge cases and corner conditions.
 - Correct understanding of usage and implementation of `pylint` and coverage tools took a little more time and effort.
 
 ## What next?
