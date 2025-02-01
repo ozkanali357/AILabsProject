@@ -9,7 +9,7 @@ import unittest
 from RSA.KeyGen import genkeys
 
 class TestKeyGen(unittest.TestCase):
-    def testkeygen(self): # The key generation function is called and is asked to create a pair of RSA keys (16 bits size) and the prime factors used.
+    def test_keygen(self): # The key generation function is called and is asked to create a pair of RSA keys (16 bits size) and the prime factors used.
         publickey, privkey, p, q = genkeys(bits=16)
         e, _ = publickey # The public key is expected to be a tuple with exponent e and modulus n (we don't use it here so it's ignored with _).
         d, _ = privkey # The private key is expected to be a tuple containing exponent d and an additional value (which is ignored in this test).
