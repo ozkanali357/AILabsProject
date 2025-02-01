@@ -5,7 +5,7 @@
 ## What have you done this week?
 In this week, I worked on improving the quality and coverage of RSA encryption and decryption. The specific tasks done included:
 - All functions of this project were under unit testing to ensure it is correct and reliable.
-- Setup the Coverage tool for assessing test coverage with the purpose to reveal un-tested parts of the code.
+- Setup the Coverage tool for assessing test coverage with the purpose to reveal untested parts of the code.
 Integrated `pylint` in order to follow the coding standard and improve the quality of code.
 - Renaming of modules.
 - More comments in every file about using them.
