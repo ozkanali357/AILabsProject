@@ -24,9 +24,7 @@ How to configure and use the coverage tool to measure test coverage and identify
 Over the coming week, I plan to:
 - Further, test coverage should be fixed to reach 100% for all modules.
 - More refactoring to enhance code readability and maintainability.
-- Investigate further for possible optimizations in RSA encryption and decryption.
 - Start with final documentation and user guide of the project.
-- Get feedback from the course assistant w.r.t. the progress made so far if good enough or not.
 
 ## Questions and Feedback to the Course Assistant:
 - Do you have any suggestions to improve the coverage and code standard with pylint? For example, when I try to add extra tests for edge cases, the ratio of coverage falls.
