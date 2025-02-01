@@ -12,5 +12,8 @@ def encrypt(message, pubkey): # As an argument, we put a string message to encry
 def decrypt(ciphertext, privkey): # As an argument, we put the ciphertext as an integer and a tuple private key (d, n).
     d, n = privkey # The tuple private key is unpacked to its components (the private exponent d and the modulus n).
     messageint = pow(ciphertext, d, n) # We do the decryption with the RSA formula: message = ciphertext^d mod n.
-    message = messageint.to_bytes((messageint.bit_length() + 7) // 8, 'big').decode() # The integer message is converted to bytes with the method int.tobytes(). Then, the bytes are decoded to a string. We use big endian byte order, so the most significant byte is at the beginning. The number of bytes is calculated with the formula (messageint.bit_length() + 7) // 8 to see if there are enough bytes to represent the integer.
+    try:
+        message = messageint.to_bytes((messageint.bit_length() + 7) // 8, 'big').decode() # The integer message is converted to bytes with the method int.tobytes(). Then, the bytes are decoded to a string. We use big endian byte order, so the most significant byte is at the beginning. The number of bytes is calculated with the formula (messageint.bit_length() + 7) // 8 to see if there are enough bytes to represent the integer.
+    except UnicodeDecodeError: # Here, we catch the exception if the encrypted message isn't a valid UFT-8 sequence and the decrypted bytes can't be decoded as UFT-8 (Unicode Transformation Format - 8-bit.).
+        return "Decryption failed because the decrypted bytes cannot be decoded as UTF-8."
     return message # In return, we get the decrypted message as a string.
