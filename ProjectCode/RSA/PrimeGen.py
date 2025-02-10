@@ -20,7 +20,7 @@ smallprime = eratosieve(3571)
 # Here, the Miller-Rabin Probabilistic Primality Test looks at the probability of a number being prime.
 
 def millerrabin(n, k=40): # In our argument, the integer n is the number that we want to test of its primality. The integer k is the number of tests (iterations) we want to run. Higher k values increase the accuracy of the test. We chose 40 as a common (default) value.
-    if n < 2: # This check is becayuse 0 and 1 are not prime numbers.
+    if n < 2: # This check is because negative nubers, 0, and 1 are not prime numbers.
         return False
     for p in smallprime: # This is to check if n is divisible by the first 500 prime numbers (small primes) or if it is already one of the small primes.
         if n % p == 0:

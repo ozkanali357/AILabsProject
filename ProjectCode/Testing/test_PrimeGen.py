@@ -25,13 +25,13 @@ class TestPrimeUtils(unittest.TestCase):
         self.assertTrue(prime % 2 != 0) # We check if the generated number is odd.
         self.assertTrue(millerrabin(prime)) # We check if the generated number is prime.
 
-    def test_large_composite(self): # We test Miller-Rabin with a composite number that is a product of two large primes.
+    def test_bigcomposite(self): # We test Miller-Rabin with a composite number that is a product of two large primes.
         p = dobigprime(500)
         q = dobigprime(500)
         composite = p * q
         self.assertFalse(millerrabin(composite)) # The composite number should return False.
 
-    def test_large_prime(self): # This test is similar to the one above, it tests Miller-Rabin with a known large prime.
+    def test_bigprime(self): # This test is similar to the one above, it tests Miller-Rabin with a known large prime.
         prime = dobigprime(1024)
         self.assertTrue(millerrabin(prime))
 
