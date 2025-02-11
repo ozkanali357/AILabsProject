@@ -58,9 +58,9 @@ The project would implement RSA encryption to secure data. This would showcase t
 
 ### References:
 
-- [RSA Encryption](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
-- [Miller-Rabin Primality Test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
-- [Modular Exponentiation](https://en.wikipedia.org/wiki/Modular_exponentiation)
+- RSA Encryption(https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+- Miller-Rabin Primality Test(https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
+- Modular Exponentiation(https://en.wikipedia.org/wiki/Modular_exponentiation)
 
 ### Other Information:
 
