@@ -2,52 +2,50 @@
 
 ## General Structure of the Program
 
-The project is separated into several files, each responsible for different aspects of the RSA encryption and decryption process:
-
-- KeyGen.py file generates public and private keys using large prime numbers.
-- PrimeGen.py file includes functions for generating large prime numbers using the Sieve of Eratosthenes and the Miller-Rabin Primality Test.
-- Cription.py file includes functions for encryption and decryption of messages using RSA.
-- CLInterface.py file offers a command line interface for key generation, encryption, and decryption.
-- GUInterface.py file provides a graphical user interface for key generation, encryption, and decryption.
+- The primegen.py file has functions for making large prime numbers with the Sieve of Eratosthenes and the Miller-Rabin Primality Test.
+- The keygen.py file makes public and private keys with large prime numbers.
+- The cription.py file includes functions for encryption and decryption of messages using RSA.
+- The clinterface.py file gices a command line interface for key generation, encryption, and decryption.
+- The guinterface.py program provides a graphical user interface for key generation, encryption, and decryption.
 
 ## Time and Space Complexities
 
-### KeyGen.py
-- Time Complexity: $O(\n^3)$ for key generation, where n is the number of bits.
-- Space Complexity: $O(n)$.
+### keygen.py
+- Time Complexity: \(O(n^3)\) for key generation, where \(n\) is the number of bits.
+- Space Complexity: \(O(n)\).
 
-### PrimeGen.py
+### primegen.py
 - Sieve of Eratosthenes:
-  - Time Complexity: $O(n \log \log n)$.
-  - Space Complexity: $O(n)$.
+- Time Complexity: \(O(n \log \log n)\).
+- Space Complexity: \(O(n)\).
 - Miller-Rabin Primality Test:
-  - Time Complexity: $O(k \\cdot \\log^3 n)$, where $k$ is the number of iterations.
-  - Space Complexity: $O(\\log n)$.
+- Time Complexity: \(O(k \cdot \log^3 n)\), \(k\) is the number of iterations.
+- Space Complexity: \(O(\log n)\).
 
-### Cription.py
+### cription.py
 - Modular Exponentiation:
-- Time Complexity: $O(\log n)$.
- - Space Complexity: $O(\log n)$.
+- Time Complexity: \(O(\log n)\).
+- Space Complexity: \(O(\log n)\).
 
 ## Performance and Big O Analysis Comparison
 
-Efficiency in the RSA algorithm depends significantly on prime number generation and modular exponentiation. While the Sieve of Eratosthenes is an efficient method of generating small primes, large primes can be generated with high accuracy by using the Miller-Rabin test. Moreover, modular exponentiation ensures efficient encryption and decryption operations.
+Efficiency of the RSA algorithm relies heavily on prime number generation and modular exponentiation. Although the Sieve of Eratosthenes is an effective way to generate small primes, large primes can be found to a very high precision using the Miller-Rabin test. Modular exponentiation also provides effective encryption and decryption methods.
 
-## Potential Shortcomings and Suggested Improvements
+## Possible Weaknesses and Recommended Improvements
 
-### Shortcomings
-1. Efficiency: There is room for improvement in the efficiency of a number of iterations for the Miller-Rabin test.
-2. Error Handling: Even though error handling is done, edge cases may be missed out.
-3. UI: The GUI can be made more user-friendly.
+### Weaknesses
+- I believe the number of iterations for the Miller-Rabin test can be optimized for better performance.
+- I have provided error handling in the code but might have missed some edge cases.
+- I can make the GUI more intuitive.
 
-### Further Improvements
-1. Parallel Processing: Do parallel processing for generating prime numbers so that the performance will increase.
-2. Improved Error Handling: Increase the error handling to cater for more edge cases.
-3. User Interface Improvements: A better graphical user interface, easier to work with, and more features.
+### Future Improvements
+- I can use parallel processing to generate prime numbers for better performance.
+- I can enhance error handling for more edge cases.
+- I can create a more intuitive graphical user interface with more features.
 
-## Utilized Advanced Language Models
+## Used Advanced Language Models
 
-GitHub Copilot helped explain confusing areas to me in the topic and to decode errors in the code for this assignment.
+I utilized GitHub Copilot to help make confusing parts of the subject more understandable and decipher code errors.
 
 ## References
 

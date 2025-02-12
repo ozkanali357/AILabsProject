@@ -6,7 +6,7 @@ import sys
 import os
 import unittest
 from unittest.mock import patch
-from RSA.keygen import genkeys
+from rsa.keygen import genkeys
 
 # This is for correct parent directory to path addition, allowing correct import of modules.
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -27,7 +27,7 @@ class TestKeyGen(unittest.TestCase):
 # We check if the public and private keys are correct.
         self.assertEqual((e * d) % phi, 1)
 
-    @patch('RSA.keygen.dobigprime')
+    @patch('rsa.keygen.dobigprime')
     def test_sameprimesgenkeys(self, mock_dobigprime):
         '''
         We simulate that the first two calls to dobigprime return the same prime,
@@ -37,7 +37,7 @@ class TestKeyGen(unittest.TestCase):
         _, _, p, q = genkeys(bits=16)
         self.assertNotEqual(p, q)
 
-    @patch("RSA.keygen.gcd")
+    @patch("rsa.keygen.gcd")
     def test_enocoprimegenkeys(self, mock_gcd):
         '''
         We simulate that the first call to gcd returns a non-1 value,

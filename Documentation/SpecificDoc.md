@@ -4,8 +4,8 @@
 
 ### Programming Language:
 
-- **Primary Language:** Python
-- **Proficient Languages:**
+- Primary Language: Python
+- Proficient Languages:
   - Python (the preferred one)
   - R
   - JavaScript

@@ -8,8 +8,8 @@ import sys
 import os
 from pathlib import Path
 from typing import Tuple
-from RSA.keygen import genkeys
-from RSA.cription import encrypt, decrypt
+from rsa.keygen import genkeys
+from rsa.cription import encrypt, decrypt
 
 # This is for correct parent directory to path addition, allowing correct import of modules.
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -84,10 +84,10 @@ def main():
 # We get the menu of options printed.
         while True:
             print("\nRSA Encryption and Decryption Project")
-            print("Press 1 for generating keys.")
-            print("Press 2 for encrypting your message.")
-            print("Press 3 for decrypting your message.")
-            print("Press 4 for exiting the project.")
+            print("Press 1 and 'Enter' for generating keys.")
+            print("Press 2 and 'Enter' for encrypting your message.")
+            print("Press 3 and 'Enter' for decrypting your message.")
+            print("Press 4 and 'Enter' for exiting the project.")
 
             choice = input("\nPlease choose an option (1,2,3,4): ").strip()
 

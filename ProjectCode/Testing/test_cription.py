@@ -5,8 +5,8 @@ This file tests if the encryption and decryption functions work correctly.
 import sys
 import os
 import unittest
-from RSA.cription import encrypt, decrypt
-from RSA.keygen import genkeys
+from rsa.cription import encrypt, decrypt
+from rsa.keygen import genkeys
 
 # This is for correct parent directory to path addition, allowing correct import of modules.
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

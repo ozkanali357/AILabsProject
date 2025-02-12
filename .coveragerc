@@ -2,10 +2,9 @@
 branch = True
 source = 
     ProjectCode/RSA
-    ProjectCode/Testing
 omit = 
-    */__init__.py
-    */test_*.py
+    */clinterface.py
+    */guinterface.py
 
 [report]
 show_missing = True

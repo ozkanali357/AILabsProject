@@ -9,8 +9,8 @@ from pathlib import Path
 import sys
 import os
 from typing import Tuple
-from RSA.keygen import genkeys
-from RSA.cription import encrypt, decrypt
+from rsa.keygen import genkeys
+from rsa.cription import encrypt, decrypt
 
 # This is for the correct parent directory to import modules.
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

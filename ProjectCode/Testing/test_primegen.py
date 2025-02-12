@@ -5,7 +5,7 @@ This file has unit tests for prime_gen.py.
 import sys
 import os
 import unittest
-from RSA.primegen import eratosieve, millerrabin, dobigprime
+from rsa.primegen import eratosieve, millerrabin, dobigprime
 
 # This is for correct parent directory to path addition, allowing correct import of modules.
 thisdir = os.path.dirname(os.path.abspath(__file__))
