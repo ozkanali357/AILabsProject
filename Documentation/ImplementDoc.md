@@ -45,9 +45,10 @@ The generation of large primes and modular exponentiation highly impact the effi
 
 ## Used Advanced Language Models
 
-I used GitHub Copilot to help to make hard to read parts of the subject more readable and to decode bugs in code.
+I used GitHub Copilot to help to understand the difficult parts of the subject and to decode bugs in code.
 
 ## References
 
 - RSA Encryption (https://en.wikipedia.org/wiki/RSA_(cryptosystem))
-- Miller-Rabin Primality Test (https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+- Miller-Rabin Primality Test (https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
+- Modular Exponentiation(https://en.wikipedia.org/wiki/Modular_exponentiation)

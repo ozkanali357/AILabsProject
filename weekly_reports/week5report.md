@@ -13,7 +13,7 @@
 - Made project code get a 10/10 code quality using pylint.
 
 ### Peer Review
-I cloned the project repository to my laptop. It was on a related topic to my project but I went over the project's topic and what it is all about. I went over the project's code and tests in detail to be familiar with every class and method. I tried to run the project and its tests to find bugs. I provided in-depth feedback. This was in the form of improvement proposals, bugs found, and constructive notes. I put up the feedback as a GitHub Issue and referenced it in Labtool.
+I cloned the project repository to my laptop. It is the same topic as my project but I went over the project's topic and what it is all about. I went over the project's code and tests in detail to be familiar with every class and method. I tried to run the project and its tests to find bugs. I provided in-depth feedback. This was in the form of improvement proposals, bugs found, and constructive notes. I put up the feedback as a GitHub Issue and referenced it in Labtool.
 
 ## How did the project move forward?
 The project progressed well this week. The code is of better quality, and documentation is done correctly.
