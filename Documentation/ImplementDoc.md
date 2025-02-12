@@ -1,17 +1,17 @@
 # Implementation Document
 
-## General Structure of the Program
+## Overall Structure of the Program
 
-- The primegen.py file has functions for making large prime numbers with the Sieve of Eratosthenes and the Miller-Rabin Primality Test.
-- The keygen.py file makes public and private keys with large prime numbers.
-- The cription.py file includes functions for encryption and decryption of messages using RSA.
-- The clinterface.py file gices a command line interface for key generation, encryption, and decryption.
-- The guinterface.py program provides a graphical user interface for key generation, encryption, and decryption.
+- The large prime generation methods via Sieve of Eratosthenes and Miller-Rabin Primality Test are in file primegen.py.
+- The file keygen.py is used to generate keys via large prime numbers.
+- The file cription.py has methods to message encryption and decryption via RSA.
+- The file clinterface.py is a command line interface to generate keys, encrypt, and decrypt.
+- The file guinterface.py is a graphical user interface to generate keys, encrypt, and decrypt.
 
 ## Time and Space Complexities
 
 ### keygen.py
-- Time Complexity: \(O(n^3)\) for key generation, where \(n\) is the number of bits.
+- Time Complexity: \(O(n^3)\) to generate keys, \(n\) is number of bits.
 - Space Complexity: \(O(n)\).
 
 ### primegen.py
@@ -19,7 +19,7 @@
 - Time Complexity: \(O(n \log \log n)\).
 - Space Complexity: \(O(n)\).
 - Miller-Rabin Primality Test:
-- Time Complexity: \(O(k \cdot \log^3 n)\), \(k\) is the number of iterations.
+- Time Complexity: \(O(k \cdot \log^3 n)\), \(k\) is iteration count.
 - Space Complexity: \(O(\log n)\).
 
 ### cription.py
@@ -27,28 +27,27 @@
 - Time Complexity: \(O(\log n)\).
 - Space Complexity: \(O(\log n)\).
 
-## Performance and Big O Analysis Comparison
+## Comparison of Efficiency of RSA Algorithm using Big O Analysis
 
-Efficiency of the RSA algorithm relies heavily on prime number generation and modular exponentiation. Although the Sieve of Eratosthenes is an effective way to generate small primes, large primes can be found to a very high precision using the Miller-Rabin test. Modular exponentiation also provides effective encryption and decryption methods.
+The generation of large primes and modular exponentiation highly impact the efficiency of RSA algorithm. Although Sieve of Eratosthenes is a wonderful method to generate small primes, large primes can be generated to high precision via Miller-Rabin test. Modular exponentiation also results in efficient methods of encryption and decryption.
 
-## Possible Weaknesses and Recommended Improvements
+## Potential Weaknesses and Recommended Improvements
 
 ### Weaknesses
-- I believe the number of iterations for the Miller-Rabin test can be optimized for better performance.
-- I have provided error handling in the code but might have missed some edge cases.
-- I can make the GUI more intuitive.
+- I feel that I can set the number of Miller-Rabin test iterations to be more efficient.
+- I've added error handling in my program but possibly not to all possibilities.
+- I can also make my GUI more intuitive to use.
 
-### Future Improvements
-- I can use parallel processing to generate prime numbers for better performance.
-- I can enhance error handling for more edge cases.
-- I can create a more intuitive graphical user interface with more features.
+### Improvements in the Future
+- I can apply parallel processing to generate primes to get a better response.
+- I can also enhance error handling to more possibilities.
+- I can design a more intuitive graphical user interface that is stronger.
 
 ## Used Advanced Language Models
 
-I utilized GitHub Copilot to help make confusing parts of the subject more understandable and decipher code errors.
+I used GitHub Copilot to help to make hard to read parts of the subject more readable and to decode bugs in code.
 
 ## References
 
 - RSA Encryption (https://en.wikipedia.org/wiki/RSA_(cryptosystem))
-- Miller-Rabin Primality Test (https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
-- Modular Exponentiation (https://en.wikipedia.org/wiki/Modular_exponentiation)
+- Miller-Rabin Primality Test (https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test

@@ -2,36 +2,36 @@
 
 ## Hours Spent: 12 hours
 
-## What have you done this week?
-- Added more commenting to the code to make it more understandable.
-- Changed class names to PascalCase naming and file names to snake_case naming.
-- Removed trailing whitespaces and broke long lines for better formatting.
-- Used different commenting styles for functions and details to make the code more readable.
-- Improved the import system so that the files can run easier.
+## What did you do this week?
+- Added more comments to be readable.
+- Renamed class names to PascalCase naming conventions and file names to snake_case naming conventions.
+- Removed trailing whitespaces and divided up lengthy lines for readability.
+- Used different commenting conventions for function and details to be readable.
+- Improved import system to allow files to be easily runnable.
 - Completed peer review 1.
-- Wrote the testing document, implementation document, and user guide.
-- Made the project code get a 10/10 code quality from pylint.
+- Written testing document, implementation document, and user guide.
+- Made project code get a 10/10 code quality using pylint.
 
 ### Peer Review
-I cloned the project repository to my machine. It was about the same topic as mine but I read the project's topic and what it is about. I went through the project's code and tests carefully to know about every class and method. I attempted to run the project and its tests to see if there are any issues. I gave thorough feedback. This was in the form of improvement suggestions, bugs encountered, and positive comments. I posted the feedback as a GitHub Issue and linked it in Labtool.
+I cloned the project repository to my laptop. It was on a related topic to my project but I went over the project's topic and what it is all about. I went over the project's code and tests in detail to be familiar with every class and method. I tried to run the project and its tests to find bugs. I provided in-depth feedback. This was in the form of improvement proposals, bugs found, and constructive notes. I put up the feedback as a GitHub Issue and referenced it in Labtool.
 
-## How has the project progressed?
-The project has progressed well this week. The code is of much higher quality, and proper documentation has been created.
+## How did the project move forward?
+The project progressed well this week. The code is of better quality, and documentation is done correctly.
 
 ## What did you learn this week?
-- Improved my understanding of code readability and quality.
-- Learned how to use pylint for coding standards and code quality improvement.
-- Gained experience in preparing detailed documentation, including testing documentation, implementation documentation, and user manuals.
-- Gained experience in performing peer reviews and providing constructive feedback.
+- Greater knowledge of readability of code and quality.
+- Learnt to use pylint for coding conventions and improving code quality.
+- Experienced in making in-depth documentation, such as testing documentation, implementation documentation, and user manuals.
+- Experienced in performing peer review and providing constructive criticism.
 
-## What has been unclear or problematic?
-- Ensuring the balance of detail in documentation and comments that it is informative but not wordy.
-- Ensuring that all edge cases are caught in the tests and the code is pylint compliant.
+## What was unclear or difficult?
+- Ensuring documentation and comments maintain a balance of detail to be informative without using too many words.
+- All edge cases handled in the tests and ensuring that the code is pylint compliant.
 
-## What next?
-- Continue refining the code and documentation according to any feedback.
-- Prepare for final submission of the project.
+## Next steps to be done:
+- Work towards making the code better and documentation based on any input provided.
+- Prepare to submit the project in its final state.
 
-## Questions and Feedback to the Course Assistant:
-- Do you have any suggestions on how to improve the code and make it more readable?
-- Are there any additional tests or edge cases that you believe I should add?
+## Questions to Ask/Feedback to TA:
+- Would you have advice on improving readability of the code?
+- Are there other tests or edge cases you would recommend that I include?

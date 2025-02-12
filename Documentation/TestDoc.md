@@ -1,6 +1,6 @@
 # Testing Document
 
-Apart from the coverage tests, the project also holds a 10/10 pylint code quality on all ProjectCode files. The pylint terminal output is found in the Documentation folder. You can test it with this command: pylint ProjectCode/rsa/*.py
+There is also a 10/10 pylint code quality in all of the project's ProjectCode files. The terminal output of pylint is in the Documentation directory. You can check it using this command: pylint ProjectCode/rsa/*.py
 
 ## Coverage Report of the Unit Tests
 ### Algorithms Coverage Summary (Without Interfaces)
@@ -10,51 +10,51 @@ Apart from the coverage tests, the project also holds a 10/10 pylint code qualit
   - keygen.py: 100%
   - cription.py: 100%
 
-## What Has Been Tested and How?
+## What Have Been Tested and How?
 
 ### primegen.py
-- eratosieve(limit): Generates small prime numbers up to a given limit using the Sieve of Eratosthenes. It was tested by giving a value and looking at the correctness of the prime numbers made up to it.
-- millerrabin(n, k=40): Tests the primality of a number using the Miller-Rabin Primality Test. It was tested with known prime and non-prime numbers. It's additionally composite numbers.
-- dobigprime(bits): Creates big prime numbers through the Miller-Rabin Primality Test. It was checked against a known large prime.
+- eratosieve(limit): Generates small prime numbers up to a given limit using the Sieve of Eratosthenes. Checked using a given value and ensuring that it is generated correctly up to it.
+- millerrabin(n, k=40): Checks a number's primality using Miller-Rabin Primality Test. Checked using known composite and prime numbers. It's also composite numbers.
+- dobigprime(bits): Generates big prime numbers using Miller-Rabin Primality Test. Checked using a known large prime.
 
 ### keygen.py
-- genkeys(bits=1024): Creates public and private keys for RSA encryption.
-- Added unit tests to ensure that the keys produced fulfill RSA properties. Mocking was used to create various situations like producing the same primes and ensuring the public exponent is coprime to Euler's totient function.
+- genkeys(bits=1024): Generates public and private keys to be used in RSA encryption.
+- Added unit tests to verify that generated keys satisfy RSA properties. Mocking was used to simulate different scenarios such as generating same primes and ensuring that the public exponent is coprime to Euler's totient function.
 
 ### cription.py
-- encrypt(message, pubkey): Encrypts a message with the RSA public key.
-- decrypt(ciphertext, privkey): Decrypts a ciphertext with the RSA private key.
-- Unit tests were written to ensure a message can be successfully encrypted and decrypted. Edge cases, such as invalid UTF-8 sequences, were attempted to ensure errors are properly dealt with.
+- encrypt(message, pubkey): Encrypts a message using RSA's public key.
+- decrypt(ciphertext, privkey): Decrypts a ciphertext using RSA's private key.
+- The unit tests were created to verify that a message can be encrypted and decrypted correctly. Edge cases, such as invalid UTF-8 sequence, were tried to verify that it is handled correctly.
 
 ## What Kind of Inputs Were Used for the Testing?
 
-- Prime Number Generation: Small integers for eratosieve, known prime and composite numbers for millerrabin, and bit lengths for dobigprime.
-- Key Generation: Default bit length of 1024 and mock scenarios for edge cases.
-- Encryption and Decryption: Example messages, for instance, long strings and special characters, to test the encryption and decryption methods.
+- Prime Generation: Eratosthenes Sieve small integers, composite and prime for Miller-Rabin, and bit sizes for dobigprime.
+- Key Generation: Bit length default of 1024 and mocked scenarios for edge cases.
+- Encryption and Decryption: Sample message, e.g., string of large characters and special characters, to check encryption and decryption function.
 
-## How Can the Tests Be Repeated?
+## How to Repeat the Tests?
 
-- Ensure you have unittest installed: pip install coverage
-- Get into the ProjectCode/Testing folder: export PYTHONPATH=where_the_project_is_downloaded/ProjectCode
-- Run the unit tests: cd where_the_project_is_downloaded/ProjectCode/Testing
+- Install unittest: pip install coverage
+- Move to Testing directory of ProjectCode: export PYTHONPATH=where_the_project_is_downloaded/ProjectCode
+- Execute the unit tests: cd where_the_project_is_downloaded/ProjectCode/Testing
 coverage run --source=./rsa --omit=./rsa/clinterface.py,./rsa/guinterface.py -m unittest discover
-- For a covarage report: coverage html
-- To view the report: xdg-open htmlcov/index.html
+- In case of covarage report: coverage html
+- Open report: xdg-open htmlcov/index.html
 
-## Presentation of the Empirical Testing Results
+## Presentations of the Empirical Testing Results
 
-### Prime Number Generation
-- Sieve of Eratosthenes: Generated primes up to 30 were [2, 3, 5, 7, 11, 13, 17, 19, 23, 29].
-- Miller-Rabin Primality Test: Correctly identified primes and composites.
-- Large Prime Generation: Successfully generated large primes of specified bit lengths.
+### Prime Generation
+- Eratosthenes Sieve: Calculated up to 30 primes were [2, 3, 5, 7, 11, 13, 17, 19, 23, 29].
+- Miller-Rabin Primality Test: Identified correctly the primes and composite.
+- Generation of Large Primes: Successfully generated large primes of given sizes.
 
-### Key Generation
-- Generated Keys: Verified that the generated keys satisfy RSA properties.
-- Mocked Scenarios: Looked how the code works in edge cases.
+### Generation of Keys
+- Generated Keys: Checked that keys generated meet RSA properties.
+- Mocked Scenarios: Checked that program is working in cases of edge cases.
 
 ### Encryption and Decryption
-- Sample Messages: Successfully encrypted and decrypted messages, maintaining data integrity.
-- Edge Cases: Properly handled invalid UTF-8 sequences and other edge cases.
+- Sample Message: Successfully encrypted and decrypted message without loss of information.
+- Edge Cases: Successfully handled invalid UTF-8 sequence and other edge cases.
 
 ### Graphical Representation
-The coverage report for the files and the functions are in the Documentation folder.
+The report of files and function coverage is in the Documentation directory.
