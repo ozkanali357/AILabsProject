@@ -35,3 +35,13 @@ The project progressed well this week. The code is of better quality, and docume
 ## Questions to Ask/Feedback to TA:
 - Would you have advice on improving readability of the code?
 - Are there other tests or edge cases you would recommend that I include?
+
+## After the Peer Review Updates
+- I added the ctrl a to the gui from the feedback.
+- I added a dependency management (Poetry)
+- I made it easier for the users to download coverage
+- I made the public exponent e fixed when even the condition gcd(e, phi) = 1 isn't met. The program regenerates the prime numbers p and q now.
+- I made a difference checker between the generated primes for the case if they are too close.
+- I made the generated prime numbers 1024 bits long by setting the most significant bit.
+- I put errors in the interfaces if the written messages are too long.
+- I changed the formatting of the naming of some files and folders.

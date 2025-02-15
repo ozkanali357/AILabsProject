@@ -14,7 +14,11 @@ def encrypt(message, pubkey):
 # The string message is encoded into bytes (message.encode()).
 # Then, the method int.from_bytes() converts the bytes to an integer.
 # We use big endian byte order, so the most significant byte is at the beginning.
-    messageint = int.from_bytes(message.encode(), 'big')
+    bytemessage = message.encode()
+    messageint = int.from_bytes(bytemessage, 'big')
+# We have an error if the message is too long.
+    if messageint >= n:
+        raise ValueError("For this key size, the message is long.")
 # We do the encryption with the RSA formula: ciphertext = message^e mod n.
     ciphertext = pow(messageint, e, n)
 # In return, we get the ciphertext, which is the encrypted message as an integer.

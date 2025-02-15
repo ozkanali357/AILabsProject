@@ -79,7 +79,7 @@ class RSAGUI:
         self.tabcontrol.add(self.tabs['encrypt'], text='Encryption')
         self.tabcontrol.add(self.tabs['decrypt'], text='Decryption')
         self.tabcontrol.pack(expand=1, fill="both")
-        self.text_displays = {}
+        self.textboxes = {}
         self.setkeytab()
         self.setencrypttab()
         self.setdecrypttab()
@@ -93,10 +93,12 @@ class RSAGUI:
         keyframe = ttk.Frame(self.tabs['key'])
         keyframe.pack(pady=10, padx=10)
         ttk.Button(keyframe, text="Generate New Keys", command=self.generatekeys).pack(pady=10)
-        self.text_displays['pubkey'] = scrolledtext.ScrolledText(keyframe, width=60, height=5)
-        self.text_displays['pubkey'].pack(pady=5)
-        self.text_displays['privkey'] = scrolledtext.ScrolledText(keyframe, width=60, height=5)
-        self.text_displays['privkey'].pack(pady=5)
+        self.textboxes['pubkey'] = scrolledtext.ScrolledText(keyframe, width=60, height=5)
+        self.textboxes['pubkey'].pack(pady=5)
+        self.textboxes['privkey'] = scrolledtext.ScrolledText(keyframe, width=60, height=5)
+        self.textboxes['privkey'].pack(pady=5)
+        self.ctrlall(self.textboxes['pubkey'])
+        self.ctrlall(self.textboxes['privkey'])
 
     def setencrypttab(self) -> None:
         '''
@@ -107,14 +109,16 @@ class RSAGUI:
         encryptframe = ttk.Frame(self.tabs['encrypt'])
         encryptframe.pack(pady=10, padx=10)
         ttk.Label(encryptframe, text="Enter Message:").pack()
-        self.text_displays['message'] = scrolledtext.ScrolledText(encryptframe, width=50, height=4)
-        self.text_displays['message'].pack(pady=5)
+        self.textboxes['message'] = scrolledtext.ScrolledText(encryptframe, width=50, height=4)
+        self.textboxes['message'].pack(pady=5)
         ttk.Button(encryptframe, text="Encrypt", command=self.encryptmessage).pack(pady=10)
         ttk.Label(encryptframe, text="Encrypted Message:").pack()
-        self.text_displays['encrypted'] = scrolledtext.ScrolledText(
+        self.textboxes['encrypted'] = scrolledtext.ScrolledText(
             encryptframe, width=50, height=4
             )
-        self.text_displays['encrypted'].pack(pady=5)
+        self.textboxes['encrypted'].pack(pady=5)
+        self.ctrlall(self.textboxes['message'])
+        self.ctrlall(self.textboxes['encrypted'])
 
     def setdecrypttab(self) -> None:
         '''
@@ -125,16 +129,30 @@ class RSAGUI:
         decryptframe = ttk.Frame(self.tabs['decrypt'])
         decryptframe.pack(pady=10, padx=10)
         ttk.Label(decryptframe, text="Enter Encrypted Message:").pack()
-        self.text_displays['encrypted_input'] = scrolledtext.ScrolledText(
+        self.textboxes['encrypted_input'] = scrolledtext.ScrolledText(
             decryptframe, width=50, height=4
             )
-        self.text_displays['encrypted_input'].pack(pady=5)
+        self.textboxes['encrypted_input'].pack(pady=5)
         ttk.Button(decryptframe, text="Decrypt", command=self.decryptmessage).pack(pady=10)
         ttk.Label(decryptframe, text="Decrypted Message:").pack()
-        self.text_displays['decrypted'] = scrolledtext.ScrolledText(
+        self.textboxes['decrypted'] = scrolledtext.ScrolledText(
             decryptframe, width=50, height=4
             )
-        self.text_displays['decrypted'].pack(pady=5)
+        self.textboxes['decrypted'].pack(pady=5)
+        self.ctrlall(self.textboxes['encrypted_input'])
+        self.ctrlall(self.textboxes['decrypted'])
+
+    def ctrlall(self, textbox: scrolledtext.ScrolledText) -> None:
+        '''
+        You can select the text in the boxes with Ctrl+A.
+        '''
+        def gettext(event):
+            textbox.tag_add(tk.SEL, "1.0", tk.END)
+            textbox.mark_set(tk.INSERT, "1.0")
+            textbox.see(tk.INSERT)
+            return 'break'
+        textbox.bind("<Control-a>", gettext)
+        textbox.bind("<Control-A>", gettext)
 
     def generatekeys(self) -> None:
         '''
@@ -143,12 +161,12 @@ class RSAGUI:
         try:
             pubkey, privkey, _, _ = genkeys()
             savekeys(pubkey, privkey)
-            self.text_displays['pubkey'].delete(1.0, tk.END)
-            self.text_displays['privkey'].delete(1.0, tk.END)
-            self.text_displays['pubkey'].insert(
+            self.textboxes['pubkey'].delete(1.0, tk.END)
+            self.textboxes['privkey'].delete(1.0, tk.END)
+            self.textboxes['pubkey'].insert(
                 tk.END, f"Public Key (e, n):\ne: {pubkey[0]}\nn: {pubkey[1]}"
             )
-            self.text_displays['privkey'].insert(
+            self.textboxes['privkey'].insert(
                 tk.END, f"Private Key (d, n):\nd: {privkey[0]}\nn: {privkey[1]}"
             )
             messagebox.showinfo("Success", "Your keys are generated and saved successfully!")
@@ -162,14 +180,18 @@ class RSAGUI:
         and shows the encrypted message in the text box.
         '''
         try:
-            message = self.text_displays['message'].get(1.0, tk.END).strip()
+            message = self.textboxes['message'].get(1.0, tk.END).strip()
             if not message:
                 messagebox.showwarning("Warning", "Please enter a message.")
                 return
             pubkey = loadkey("pubkey.txt")
-            encrypted = encrypt(message, pubkey)
-            self.text_displays['encrypted'].delete(1.0, tk.END)
-            self.text_displays['encrypted'].insert(tk.END, str(encrypted))
+# An error is given if the message is too long.
+            try:
+                encrypted = encrypt(message, pubkey)
+                self.textboxes['encrypted'].delete(1.0, tk.END)
+                self.textboxes['encrypted'].insert(tk.END, str(encrypted))
+            except ValueError as e:
+                messagebox.showerror("Error", str(e))
 # An error message is shown if there is a problem with encryption.
         except (PermissionError, ValueError) as e:
             messagebox.showerror("Error", str(e))
@@ -180,14 +202,14 @@ class RSAGUI:
         and shows the decrypted message in the text box.
         '''
         try:
-            encrypted = self.text_displays['encrypted_input'].get(1.0, tk.END).strip()
+            encrypted = self.textboxes['encrypted_input'].get(1.0, tk.END).strip()
             if not encrypted:
                 messagebox.showwarning("Warning", "Please enter an encrypted message.")
                 return
             privkey = loadkey("privkey.txt")
             decrypted = decrypt(int(encrypted), privkey)
-            self.text_displays['decrypted'].delete(1.0, tk.END)
-            self.text_displays['decrypted'].insert(tk.END, decrypted)
+            self.textboxes['decrypted'].delete(1.0, tk.END)
+            self.textboxes['decrypted'].insert(tk.END, decrypted)
 # An error message is shown if there is a problem with decryption.
         except ValueError as e:
             messagebox.showerror("Error", str(e))

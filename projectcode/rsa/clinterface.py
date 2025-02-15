@@ -111,9 +111,13 @@ def main():
 
 # We load the public key.
                 pubkey = loadkey("pubkey.txt")
-                encrypted = encrypt(message, pubkey)
 # The encrypted message is printed.
-                print(f"\nYour Encrypted Message:\n{encrypted}")
+                try:
+                    encrypted = encrypt(message, pubkey)
+                    print(f"\nYour Encrypted Message:\n{encrypted}")
+# An error comes if the message is too long.
+                except ValueError as e:
+                    print(f"Error: {e}")
 
 # 3 is selected by the user if they want to decrypt a message.
             elif choice == "3":

@@ -76,8 +76,14 @@ def dobigprime(bits):
     '''
     while True:
         num = random.getrandbits(bits)
-# We check if the number is odd, then send it to the Miller-Rabin test.
+# We want the the modulus to be close to 2048 bits to be more secure.
+# For this, the primes will be 1024 bits each.
+# We set the most significant bit to 1 to make sure the number is 1024 bits.
+        num |= (1 << (bits - 1))
+# We check if the number is odd
+        num |= 1
+# We then send it to the Miller-Rabin test.
 # If it passes, then the number is a large prime.
-        if num % 2 != 0 and millerrabin(num):
+        if millerrabin(num):
 # We return the large prime number as an integer.
             return num
