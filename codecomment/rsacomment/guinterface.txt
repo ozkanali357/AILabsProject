@@ -19,36 +19,41 @@ def savekeys(pubkey: Tuple[int, int],
             privkey: Tuple[int, int],
             directory: str = ".") -> None:
     '''
-    If the directory doesn't exist, we create it.
-    We write the public and private keys to different files.
     This function saves the RSA keys to files.
     '''
+# If the directory doesn't exist, we create it.
     Path(directory).mkdir(parents=True, exist_ok=True)
+# We write the public and private keys to different files.
     try:
         with open(f"{directory}/pubkey.txt", "w", encoding="utf-8") as f:
             f.write(f"{pubkey[0]}\n{pubkey[1]}")
         with open(f"{directory}/privkey.txt", "w", encoding="utf-8") as f:
             f.write(f"{privkey[0]}\n{privkey[1]}")
+# We get an error if there's no permission.
     except PermissionError as exc:
         raise PermissionError(f"There's no permission to write to {directory}") from exc
 
 def loadkey(filename: str) -> Tuple[int, int]:
     '''
-    This function loads the RSA valid integer keys from a file.
+    This function loads the RSA keys from a file.
     '''
     try:
+# We read the keys from the file.
         with open(filename, "r", encoding="utf-8") as f:
+# The code reads the key parts from the file.
             line1 = f.readline().strip()
             line2 = f.readline().strip()
-    except FileNotFoundError as exc:
+    except FileNotFoundError as exc: # We check if the file exists.
         raise FileNotFoundError(
             f"We couldn't find {filename}. Please generate your keys first."
             ) from exc
     try:
         e = int(line1)
         n = int(line2)
+# We check if the keys are integers.
     except ValueError as exc:
         raise ValueError(f"There's an invalid key format in {filename}") from exc
+# We check if the keys are valid.
     if e <= 0 or n <= 0:
         raise ValueError("These are invalid key values.")
     return (e, n)
@@ -165,6 +170,7 @@ class RSAGUI:
                 tk.END, f"Private Key (d, n):\nd: {privkey[0]}\nn: {privkey[1]}"
             )
             messagebox.showinfo("Success", "Your keys are generated and saved successfully!")
+# An error message is shown if there is a problem with key generation.
         except (PermissionError, ValueError) as e:
             messagebox.showerror("Error", str(e))
 
@@ -179,12 +185,14 @@ class RSAGUI:
                 messagebox.showwarning("Warning", "Please enter a message.")
                 return
             pubkey = loadkey("pubkey.txt")
+# An error is given if the message is too long.
             try:
                 encrypted = encrypt(message, pubkey)
                 self.textboxes['encrypted'].delete(1.0, tk.END)
                 self.textboxes['encrypted'].insert(tk.END, str(encrypted))
             except ValueError as e:
                 messagebox.showerror("Error", str(e))
+# An error message is shown if there is a problem with encryption.
         except (PermissionError, ValueError) as e:
             messagebox.showerror("Error", str(e))
 
@@ -202,6 +210,7 @@ class RSAGUI:
             decrypted = decrypt(int(encrypted), privkey)
             self.textboxes['decrypted'].delete(1.0, tk.END)
             self.textboxes['decrypted'].insert(tk.END, decrypted)
+# An error message is shown if there is a problem with decryption.
         except ValueError as e:
             messagebox.showerror("Error", str(e))
 

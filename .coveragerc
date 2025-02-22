@@ -1,10 +1,9 @@
 [run]
 branch = True
-source = 
-    ProjectCode/RSA
-omit = 
-    */clinterface.py
-    */guinterface.py
+source = projectcode/rsa
+omit =
+    projectcode/rsa/clinterface.py
+    projectcode/rsa/guinterface.py
 
 [report]
 show_missing = True

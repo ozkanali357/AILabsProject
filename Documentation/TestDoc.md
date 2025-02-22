@@ -1,6 +1,6 @@
 # Testing Document
 
-There is also a 10/10 pylint code quality in all of the project's ProjectCode files. The terminal output of pylint is in the Documentation directory. You can check it using this command: pylint ProjectCode/rsa/*.py
+There is also a 10/10 pylint code quality in all of the project's projectcode files. The terminal output of pylint is in the Documentation directory. You can check it using this command: pylint projectcode/rsa/*.py
 
 ## Coverage Report of the Unit Tests
 ### Algorithms Coverage Summary (Without Interfaces)
@@ -35,11 +35,16 @@ There is also a 10/10 pylint code quality in all of the project's ProjectCode fi
 ## How to Repeat the Tests?
 
 - Install unittest: pip install coverage
-- Move to Testing directory of ProjectCode: export PYTHONPATH=where_the_project_is_downloaded/ProjectCode
-- Execute the unit tests: cd where_the_project_is_downloaded/ProjectCode/Testing
+- Move to Testing directory of projectcode: export PYTHONPATH=where_the_project_is_downloaded/projectcode
+- Execute the unit tests: cd where_the_project_is_downloaded/projectcode/Testing
 coverage run --source=./rsa --omit=./rsa/clinterface.py,./rsa/guinterface.py -m unittest discover
 - In case of covarage report: coverage html
 - Open report: xdg-open htmlcov/index.html
+
+or this:
+- export PYTHONPATH=$(pwd)/projectcode
+- coverage run -m unittest discover -s projectcode/testing -p "test_*.py"
+- coverage report -m
 
 ## Presentations of the Empirical Testing Results
 

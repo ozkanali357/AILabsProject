@@ -21,12 +21,17 @@ class TestCryption(unittest.TestCase):
         '''
         This method checks if a message can be encrypted and decrypted correctly.
         '''
+# Generate a pair of RSA keys with 2048 bits.
         pubkey, privkey, _, _ = genkeys(bits=2048)
+# Sample message to be encrypted.
         message = ("Trying close to 256 characters ssadösfkjdslföjdskfnöjdndsfjasdökfndsö"
                 "fndsfidsofndskncödnödiofhdskjfndsöfidsohf kjdsnvcöoidsfdkjsncldshfiudshfjdsnliuafnjdskljlksadvcj"
                 "dkvcdslicjvndslibusldbsjvcsubdslivbcjdsildjnbclkjsabdvcldsujvcasöaieufwoö")
+# Encrypt the message with the public key.
         encrypted = encrypt(message, pubkey)
+# Decrypt the message with the private key.
         decrypted = decrypt(encrypted, privkey)
+# Check if the decrypted message is the same as the original message.
         self.assertEqual(message, decrypted)
 
     def test_decryptunicodeerror(self):
@@ -35,6 +40,7 @@ class TestCryption(unittest.TestCase):
         '''
         pubkey, privkey, _, _ = genkeys(bits=2048)
         encrypted = encrypt("Hello, RSA!", pubkey)
+# Here, the encrypted message is changed to make it invalid as UTF-8.
         invalidencrypted = encrypted + 1
         result = decrypt(invalidencrypted, privkey)
         self.assertEqual(result, "The decryption didn't happen, because the decrypted bytes can't be decoded as UTF-8.")

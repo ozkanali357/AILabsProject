@@ -24,6 +24,7 @@ class TestKeyGen(unittest.TestCase):
     '''
     This class has tests for the key generation function.
     '''
+# We test if the key generation function works correctly.
     def test_keygen(self):
         '''
         This method checks if the generated keys satisfy the RSA properties.
@@ -31,7 +32,9 @@ class TestKeyGen(unittest.TestCase):
         publickey, privkey, p, q = genkeys(bits=16)
         e, _ = publickey
         d, _ = privkey
+# We calculate the Euler's totient function value.
         phi = (p - 1) * (q - 1)
+# We check if the public and private keys are correct.
         self.assertEqual((e * d) % phi, 1)
 
     @patch('projectcode.rsa.keygen.dobigprime')
@@ -53,6 +56,7 @@ class TestKeyGen(unittest.TestCase):
         mock_gcd.side_effect = [2, 2, 2, 1, 1, 1]
         publickey, _, _, _ = genkeys(bits=16)
         e, _ = publickey
+# We check if the public key is not 65537.
         self.assertNotEqual(e, 65537)
 
     @patch("projectcode.rsa.keygen.dobigprime")

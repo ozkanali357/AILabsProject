@@ -3,6 +3,8 @@
 ## Running the Program
 The program can be executed in editors like VSCode using the run button. Hovewer, I've also explained other methods below.
 
+You can additionally find the code explanations under the codecomment folder.
+
 ### Command Line Interface (CLI)
 
 - Open a terminal and move to where the project is.

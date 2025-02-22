@@ -20,6 +20,7 @@ class TestPrimeGen(unittest.TestCase):
         """
         The method tests the sieve of eratosthenes function by calling the argument 30.
         """
+# We need to be sure that the returned list of numbers match the primes up to 30.
         primes = eratosieve(30)
         self.assertEqual(primes, [2, 3, 5, 7, 11, 13, 17, 19, 23, 29])
 
@@ -27,10 +28,15 @@ class TestPrimeGen(unittest.TestCase):
         """
         We check the Miller Rabin Primality Test.
         """
+# 13 is prime, so it should return True.
         self.assertTrue(millerrabin(13))
+# 15 isn't prime, so it should return False.
         self.assertFalse(millerrabin(15))
+# 0 isn't prime, so it should return False.
         self.assertFalse(millerrabin(0))
+# 1 isn't prime, so it should return False.
         self.assertFalse(millerrabin(1))
+# Negative numbers aren't prime, so -5 should return False.
         self.assertFalse(millerrabin(-5))
 
     def test_dobigprime(self):
@@ -39,7 +45,9 @@ class TestPrimeGen(unittest.TestCase):
         can make it the specified amount (10 bits).
         """
         prime = dobigprime(10)
+# We check if the generated number is odd.
         self.assertTrue(prime % 2 != 0)
+# We check if the generated number is prime.
         self.assertTrue(millerrabin(prime))
 
     def test_bigcomposite(self):
@@ -49,6 +57,7 @@ class TestPrimeGen(unittest.TestCase):
         p = dobigprime(500)
         q = dobigprime(500)
         composite = p * q
+# The composite number should return False.
         self.assertFalse(millerrabin(composite))
 
     def test_bigprime(self):
