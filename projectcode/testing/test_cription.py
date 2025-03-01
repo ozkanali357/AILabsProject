@@ -3,7 +3,6 @@ This file tests if the encryption and decryption functions work correctly.
 '''
 
 import sys
-import os
 import unittest
 from pathlib import Path
 

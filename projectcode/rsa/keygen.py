@@ -3,7 +3,6 @@ This file aims to generate public and private keys for RSA encryption and decryp
 '''
 
 import sys
-import os
 from math import gcd
 from pathlib import Path
 

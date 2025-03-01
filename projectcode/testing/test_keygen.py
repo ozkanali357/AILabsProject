@@ -3,7 +3,6 @@ This file tests if the key generation function works correctly.
 '''
 
 import sys
-import os
 import unittest
 import builtins
 from unittest.mock import patch

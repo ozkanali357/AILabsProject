@@ -3,7 +3,6 @@ This file has unit tests for prime_gen.py.
 """
 
 import sys
-import os
 import unittest
 from pathlib import Path
 

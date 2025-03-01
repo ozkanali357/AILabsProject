@@ -30,7 +30,7 @@ There is also a 10/10 pylint code quality in all of the project's projectcode fi
 
 - Prime Generation: Eratosthenes Sieve small integers, composite and prime for Miller-Rabin, and bit sizes for dobigprime.
 - Key Generation: Bit length default of 1024 and mocked scenarios for edge cases.
-- Encryption and Decryption: Sample message, e.g., string of large characters and special characters, to check encryption and decryption function.
+- Encryption and Decryption: Sample message like string of large characters and special characters, to check encryption and decryption function.
 
 ## How to Repeat the Tests?
 
