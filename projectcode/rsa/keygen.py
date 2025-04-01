@@ -3,13 +3,24 @@ This file aims to generate public and private keys for RSA encryption and decryp
 '''
 
 import sys
-from math import gcd
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from projectcode.rsa.primegen import dobigprime
+
+def euclidgcd(a, b):
+    """
+    As an argument it takes two integers a and b.
+    It calculates the greatest common divisor of a and b using the Euclidean algorithm.
+    It returns the greatest common divisor of a and b.
+    """
+    a, b = abs(a), abs(b)
+    while b:
+        a, b = b, a % b
+    
+    return a
 
 def genkeys(bits=1024):
     """
@@ -29,9 +40,9 @@ def genkeys(bits=1024):
         n = p * q
         phi = (p - 1) * (q - 1)
 
-        if gcd(e, phi) != 1:
+        if euclidgcd(e, phi) != 1:
             e = 3
-            while gcd(e, phi) != 1:
+            while euclidgcd(e, phi) != 1:
                 e += 2
         try:
             d = pow(e, -1, phi)

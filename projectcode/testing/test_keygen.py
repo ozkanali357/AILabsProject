@@ -43,24 +43,24 @@ class TestKeyGen(unittest.TestCase):
         _, _, p, q = genkeys(bits=16)
         self.assertNotEqual(p, q)
 
-    @patch("projectcode.rsa.keygen.gcd")
-    def test_enocoprimegenkeys(self, mock_gcd):
+    @patch("projectcode.rsa.keygen.euclidgcd")
+    def test_enocoprimegenkeys(self, mock_euclidgcd):
         '''
-        We simulate that the first call to gcd returns a non-1 value,
+        We simulate that the first call to euclidgcd returns a non-1 value,
         such as 2, and the second call returns 1.
         '''
-        mock_gcd.side_effect = [2, 2, 2, 1, 1, 1]
+        mock_euclidgcd.side_effect = [2, 2, 2, 1, 1, 1]
         publickey, _, _, _ = genkeys(bits=16)
         e, _ = publickey
         self.assertNotEqual(e, 65537)
 
     @patch("projectcode.rsa.keygen.dobigprime")
-    @patch("projectcode.rsa.keygen.gcd")
-    def test_genkeyseloop(self, mock_gcd, mock_dobigprime):
+    @patch("projectcode.rsa.keygen.euclidgcd")
+    def test_genkeyseloop(self, mock_euclidgcd, mock_dobigprime):
         '''
         This test forces the genkeys function to loop and change the value of e.
         '''
-        mock_gcd.side_effect = [2, 2, 2, 1, 1, 1]
+        mock_euclidgcd.side_effect = [2, 2, 2, 1, 1, 1]
         mock_dobigprime.side_effect = [17, 19, 23, 29, 31, 37]
         publickey, privkey, p, q = genkeys(bits=16)
         e, _ = publickey
